@@ -13,6 +13,7 @@ interface ICartContext {
   addProductToCart: (product: CartProduct) => void
   decreaseProductQuantity: (productId: number) => void
   increaseProductQuantity: (productId: number) => void
+  clearCart: () => void
 }
 
 export const CartContext = createContext<ICartContext>({} as ICartContext)
@@ -23,6 +24,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const totalPrice = products.reduce((acc, product) => {
     return acc + product.price * product.quantity
   }, 0)
+
+  const clearCart = () => {
+    setProducts([])
+  }
 
   const addProductToCart: ICartContext['addProductToCart'] = (product) => {
     const isProductAlreadyOnCart = products.some(
@@ -45,8 +50,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
 
     setProducts((prev) => [...prev, product])
-
-    console.log(products)
   }
 
   const decreaseProductQuantity: ICartContext['decreaseProductQuantity'] = (
@@ -95,6 +98,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         addProductToCart,
         decreaseProductQuantity,
         increaseProductQuantity,
+        clearCart,
       }}
     >
       {children}
