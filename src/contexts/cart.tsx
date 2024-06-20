@@ -3,7 +3,7 @@
 import { ProductType } from '@/types/product'
 import { ReactNode, createContext, useState } from 'react'
 
-interface CartProduct extends ProductType {
+export interface CartProduct extends ProductType {
   quantity: number
 }
 
@@ -11,9 +11,11 @@ interface ICartContext {
   products: CartProduct[]
   totalPrice: number
   addProductToCart: (product: CartProduct) => void
+  decreaseProductQuantity: (productId: number) => void
+  increaseProductQuantity: (productId: number) => void
 }
 
-export const CartContext = createContext<ICartContext | undefined>(undefined)
+export const CartContext = createContext<ICartContext>({} as ICartContext)
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([])
@@ -43,10 +45,58 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
 
     setProducts((prev) => [...prev, product])
+
+    console.log(products)
+  }
+
+  const decreaseProductQuantity: ICartContext['decreaseProductQuantity'] = (
+    productId: number,
+  ) => {
+    return setProducts((prev) =>
+      prev.map((cartProduct) => {
+        if (cartProduct.id === productId) {
+          if (cartProduct.quantity === 1) {
+            return cartProduct
+          }
+
+          return {
+            ...cartProduct,
+            quantity: cartProduct.quantity - 1,
+          }
+        }
+
+        return cartProduct
+      }),
+    )
+  }
+
+  const increaseProductQuantity: ICartContext['increaseProductQuantity'] = (
+    productId: number,
+  ) => {
+    return setProducts((prev) =>
+      prev.map((cartProduct) => {
+        if (cartProduct.id === productId) {
+          return {
+            ...cartProduct,
+            quantity: cartProduct.quantity + 1,
+          }
+        }
+
+        return cartProduct
+      }),
+    )
   }
 
   return (
-    <CartContext.Provider value={{ products, totalPrice, addProductToCart }}>
+    <CartContext.Provider
+      value={{
+        products,
+        totalPrice,
+        addProductToCart,
+        decreaseProductQuantity,
+        increaseProductQuantity,
+      }}
+    >
       {children}
     </CartContext.Provider>
   )
