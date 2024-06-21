@@ -2,8 +2,9 @@
 
 import { Button } from '@/components/ui/button'
 import { CartContext } from '@/contexts/cart'
+import { formatCurrency } from '@/helpers/price'
 import { ProductType } from '@/types/product'
-import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+import { Minus, Plus } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useContext, useState } from 'react'
 
@@ -33,6 +34,8 @@ export function ProductQuantity({ product }: ProductQuantityProps) {
       return prev - 1
     })
 
+  const totalPriceProduct = product.price * quantity
+
   return (
     <>
       <div className="mt-5 flex w-full items-center justify-center gap-5 bg-muted px-5 py-5">
@@ -42,7 +45,7 @@ export function ProductQuantity({ product }: ProductQuantityProps) {
           className="rounded-full border border-solid border-brown-900 hover:bg-brown-800 hover:text-white"
           onClick={handleDecreaseQuantityClick}
         >
-          <ChevronLeftIcon />
+          <Minus />
         </Button>
         <span className="w-4 text-center text-xl font-bold">{quantity}</span>
         <Button
@@ -50,16 +53,17 @@ export function ProductQuantity({ product }: ProductQuantityProps) {
           className="rounded-full border border-solid border-brown-900 bg-brown-900 hover:bg-brown-800"
           onClick={handleIncreaseQuantityClick}
         >
-          <ChevronRightIcon />
+          <Plus />
         </Button>
       </div>
 
       <div className="absolute bottom-10 flex w-full justify-center px-5">
         <Button
-          className="w-full rounded-3xl bg-brown-900 hover:bg-brown-800"
+          className="w-full space-x-4 rounded-3xl bg-brown-900 hover:bg-brown-800"
           onClick={handleAddToCartClick}
         >
-          Add to order
+          <span>Adicionar ao carrinho</span> <span>-</span>
+          <span>{formatCurrency(totalPriceProduct)}</span>
         </Button>
       </div>
     </>
