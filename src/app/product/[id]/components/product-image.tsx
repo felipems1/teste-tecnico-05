@@ -17,9 +17,17 @@ export function ProductImage({ product }: ProductImageProps) {
 
   return (
     <div className="relative h-[360px] w-full lg:h-[250px]">
-      {product.images?.[0].image !== undefined && (
+      {product.images?.[0].image !== undefined ? (
         <Image
           src={product.images[0].image}
+          alt=""
+          sizes="100%"
+          fill
+          className="object-cover"
+        />
+      ) : (
+        <Image
+          src="/not-found.png"
           alt=""
           sizes="100%"
           fill
