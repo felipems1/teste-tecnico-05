@@ -7,12 +7,11 @@ import {
 import { CategoryItem } from './category-item'
 import { ProductItem } from './product-item'
 import { CategoriesType } from '@/types/categories'
+import { getCategories } from '@/services/get-categories'
 
-interface ProductsInfoProps {
-  categories: CategoriesType
-}
+export async function ProductsInfo() {
+  const categories: CategoriesType = await getCategories()
 
-export function ProductsInfo({ categories }: ProductsInfoProps) {
   return (
     <>
       <div className="mt-10 flex w-full items-center justify-around px-5">
