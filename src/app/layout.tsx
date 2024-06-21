@@ -17,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} max-w-screen min-h-screen overflow-x-hidden`}
+      >
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

@@ -8,7 +8,7 @@ interface CategoryItemProps {
 export function CategoryItem({ imageUrl, name }: CategoryItemProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-5 border-b-4 border-transparent hover:border-b-4 hover:border-brown-800">
-      <div className="relative h-[120px] w-[120px] rounded-full">
+      <div className="relative h-[100px] w-[100px] rounded-full">
         <Image
           src={imageUrl}
           alt=""

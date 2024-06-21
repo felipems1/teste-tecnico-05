@@ -2,28 +2,28 @@ import Image from 'next/image'
 import { Header } from './components/header'
 import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
-import { CategoryItem } from '@/app/(home)/components/category-item'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
-import { ProductItem } from '@/app/(home)/components/product-item'
 import { getCategories } from '@/services/get-categories'
+import { CartProducts } from '../cart/components/cart-products'
+import { ProductsInfo } from './components/products-info'
 
 export default async function Home() {
   const categories = await getCategories()
 
   return (
-    <main className="min-h-screen w-screen">
+    <main className="min-h-screen w-full bg-muted">
       <Header />
 
-      <div className="relative h-[160px] w-screen">
-        <Image src="/banner-mobile-01.png" alt="" fill quality={100} />
+      <div className="relative h-[160px] w-full">
+        <Image
+          src="/banner-desktop-01.png"
+          alt=""
+          className="object-cover"
+          fill
+          quality={100}
+        />
       </div>
 
-      <div className="mx-5 mt-5 flex items-center rounded-lg border border-border px-2">
+      <div className="mx-5 mt-5 flex items-center rounded-lg border border-border bg-white px-2 lg:mx-auto lg:max-w-[80%]">
         <Search className="text-muted-foreground" />
         <Input
           type="text"
@@ -32,27 +32,15 @@ export default async function Home() {
         />
       </div>
 
-      <div className="mt-10 flex w-full items-center justify-around px-5">
-        <CategoryItem imageUrl="/image-3.png" name="Burgers" />
-        <CategoryItem imageUrl="/image-2.png" name="Drinks" />
-        <CategoryItem imageUrl="/image-1.png" name="Desserts" />
+      <div className="lg:mx-auto lg:flex lg:max-w-[70%] lg:gap-10 lg:py-10">
+        <div className="bg-white lg:w-2/4">
+          <ProductsInfo categories={categories} />
+        </div>
+
+        <div className="hidden bg-white lg:flex lg:w-2/4">
+          <CartProducts />
+        </div>
       </div>
-
-      <Accordion type="single" collapsible className="mt-5 w-full px-5">
-        {categories.sections.map((category) => (
-          <AccordionItem key={category.id} value={category.name}>
-            <AccordionTrigger className="text-xl">
-              {category.name}
-            </AccordionTrigger>
-
-            <AccordionContent className="space-y-3">
-              {category.items.map((product) => (
-                <ProductItem product={product} key={product.id} />
-              ))}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
     </main>
   )
 }
