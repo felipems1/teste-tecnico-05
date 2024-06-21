@@ -14,6 +14,9 @@ export function CartProducts() {
 
   return (
     <div className="lg:w-full">
+      <h2 className="hidden lg:block lg:px-5 lg:pt-4 lg:text-lg lg:font-bold">
+        Carrinho
+      </h2>
       {products.length > 0 ? (
         <>
           {products.map((product) => (
@@ -36,7 +39,7 @@ export function CartProducts() {
             </div>
           </div>
 
-          <div className="absolute bottom-10 flex w-full justify-center px-5 lg:hidden">
+          <div className="absolute bottom-10 flex w-full justify-center px-5 lg:static lg:my-5">
             <Button
               className="w-full rounded-3xl bg-brown-900 hover:bg-brown-800"
               onClick={handleFinishOrder}
@@ -47,7 +50,7 @@ export function CartProducts() {
           </div>
         </>
       ) : (
-        <h3 className="mt-10 text-center text-xl font-bold">
+        <h3 className="my-10 text-center text-xl font-bold">
           Nenhum produto no carrinho
         </h3>
       )}
