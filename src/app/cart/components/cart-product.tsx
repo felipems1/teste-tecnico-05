@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { CartContext, CartProduct as CartProductType } from '@/contexts/cart'
 import { formatCurrency } from '@/helpers/price'
-import { Minus, Plus } from 'lucide-react'
+import { Minus, Plus, Trash2 } from 'lucide-react'
 import { useContext } from 'react'
 
 interface CartProductProps {
@@ -11,8 +11,15 @@ interface CartProductProps {
 }
 
 export function CartProduct({ product }: CartProductProps) {
-  const { decreaseProductQuantity, increaseProductQuantity } =
-    useContext(CartContext)
+  const {
+    decreaseProductQuantity,
+    increaseProductQuantity,
+    removeProductFromCart,
+  } = useContext(CartContext)
+
+  const handleRemoveProductFromCartClick = () => {
+    removeProductFromCart(product.id)
+  }
 
   const handleDecreaseQuantityClick = () => {
     decreaseProductQuantity(product.id)
@@ -51,9 +58,16 @@ export function CartProduct({ product }: CartProductProps) {
         </div>
       </div>
 
-      <span className="text-lg font-semibold">
-        {formatCurrency(totalPriceProduct)}
-      </span>
+      <div className="flex flex-col items-center space-y-3">
+        <span className="text-lg font-semibold">
+          {formatCurrency(totalPriceProduct)}
+        </span>
+        <Trash2
+          size={20}
+          className="cursor-pointer"
+          onClick={handleRemoveProductFromCartClick}
+        />
+      </div>
     </div>
   )
 }
