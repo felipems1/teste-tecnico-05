@@ -10,7 +10,7 @@ export function Header() {
 
   return (
     <header className="flex h-20 w-full items-center justify-center border-b border-zinc-300 bg-muted">
-      <h1 className="text-lg font-bold">Cart</h1>
+      <h1 className="text-lg font-bold">Carrinho</h1>
       <X
         className="absolute right-5 h-6 w-6 cursor-pointer"
         onClick={handleBackClick}

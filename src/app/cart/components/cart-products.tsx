@@ -42,13 +42,13 @@ export function CartProducts() {
               onClick={handleFinishOrder}
               asChild
             >
-              <Link href="/">Finalize order</Link>
+              <Link href="/">Finalizar pedido</Link>
             </Button>
           </div>
         </>
       ) : (
         <h3 className="mt-10 text-center text-xl font-bold">
-          No products in cart
+          Nenhum produto no carrinho
         </h3>
       )}
     </div>
