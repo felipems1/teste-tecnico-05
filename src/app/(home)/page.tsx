@@ -6,7 +6,7 @@ import { Search } from './components/search'
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full bg-muted">
+    <main className="min-h-screen w-full bg-white lg:bg-muted">
       <Header />
 
       <div className="relative h-[160px] w-full">
