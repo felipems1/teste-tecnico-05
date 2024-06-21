@@ -1,15 +1,15 @@
 import Image from 'next/image'
-import { Header } from '../../components/header'
+import { Header } from './components/header'
 import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
-import { CategoryItem } from '@/components/category-item'
+import { CategoryItem } from '@/app/(home)/components/category-item'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { ProductItem } from '@/components/product-item'
+import { ProductItem } from '@/app/(home)/components/product-item'
 import { getCategories } from '@/services/get-categories'
 
 export default async function Home() {
