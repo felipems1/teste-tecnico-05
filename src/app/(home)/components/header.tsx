@@ -1,15 +1,12 @@
-import Link from 'next/link'
 import { MenuSheet } from './menu-sheet'
-import { ShoppingCart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { CartQuantity } from './cart-quantity'
 
 export function Header() {
   return (
     <header className="flex h-20 w-full items-center justify-center bg-brown-900">
       <div className="flex w-screen items-center justify-between px-5 lg:hidden">
-        <Link href="/cart">
-          <ShoppingCart className="h-7 w-7 text-white" />
-        </Link>
+        <CartQuantity />
 
         <h1 className="text-lg font-semibold text-white">BURGERS RESTAURANT</h1>
 
