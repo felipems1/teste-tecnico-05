@@ -38,7 +38,7 @@ export function ProductQuantity({ product }: ProductQuantityProps) {
 
   return (
     <>
-      <div className="mt-5 flex w-full items-center justify-center gap-5 bg-muted px-5 py-5">
+      <div className="mb-5 mt-5 flex w-full items-center justify-center gap-5 bg-muted px-5 py-5">
         <Button
           size="icon"
           variant="ghost"
@@ -57,7 +57,7 @@ export function ProductQuantity({ product }: ProductQuantityProps) {
         </Button>
       </div>
 
-      <div className="absolute bottom-10 flex w-full justify-center px-5">
+      <div className="absolute bottom-10 flex w-full justify-center px-5 lg:bottom-1 lg:inline">
         <Button
           className="w-full space-x-4 rounded-3xl bg-brown-900 hover:bg-brown-800"
           onClick={handleAddToCartClick}

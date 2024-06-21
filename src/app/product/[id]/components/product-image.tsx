@@ -16,7 +16,7 @@ export function ProductImage({ product }: ProductImageProps) {
   const handleBackClick = () => router.back()
 
   return (
-    <div className="relative h-[360px] w-full">
+    <div className="relative h-[360px] w-full lg:h-[250px]">
       {product.images?.[0].image !== undefined && (
         <Image
           src={product.images[0].image}
@@ -28,7 +28,7 @@ export function ProductImage({ product }: ProductImageProps) {
       )}
 
       <Button
-        className="absolute right-6 top-6 flex rounded-full bg-white text-foreground hover:bg-brown-900 hover:text-white"
+        className="absolute right-6 top-6 flex rounded-full bg-white text-foreground hover:bg-brown-900 hover:text-white lg:hidden"
         size="icon"
         onClick={handleBackClick}
       >

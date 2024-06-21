@@ -13,7 +13,7 @@ export function CartProducts() {
   const handleFinishOrder = () => clearCart()
 
   return (
-    <div>
+    <div className="lg:w-full">
       {products.length > 0 ? (
         <>
           {products.map((product) => (
@@ -36,7 +36,7 @@ export function CartProducts() {
             </div>
           </div>
 
-          <div className="absolute bottom-10 flex w-full justify-center px-5">
+          <div className="absolute bottom-10 flex w-full justify-center px-5 lg:hidden">
             <Button
               className="w-full rounded-3xl bg-brown-900 hover:bg-brown-800"
               onClick={handleFinishOrder}
