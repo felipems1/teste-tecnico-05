@@ -2,8 +2,6 @@
 
 Bem-vindo ao repositório do teste tecnico! Este projeto foi desenvolvido utilizando TypeScript, Next.js, Tailwind CSS e Shadcn/UI, proporcionando uma base sólida e moderna para a construção de aplicações web rápidas, responsivas e escaláveis.
 
-O aplicativo estará disponível em <strong>https://teste-tecnico-05.vercel.app/</strong>
-
 ## Índice
 * Sobre
 * Tecnologias Utilizadas
